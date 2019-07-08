@@ -143,7 +143,7 @@ visPhysics( repulsion = list(springlength = 50),
 
 vis_plot
 ```
-![Alt text](figures/figure2.html?raw=true "Title")
+![Alt text](figures/figure2.png?raw=true "Title")
 
 # Papers Citations + Authors Most Cited
 
