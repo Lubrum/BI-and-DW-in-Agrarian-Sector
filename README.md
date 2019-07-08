@@ -165,7 +165,7 @@ ggplot( citations_x_authors[,4:3],
 
 # Periodicals
 
-First, we load the needed data. We have four atributes for each journal/conference: journal or conference name, number of papers in the portfolio, number of papers in bibliographic references of the portfolio and the Journal Citation Report (JCR) value (only to scientific journals). Then we use **ggplot**. We use the Pareto Principle again with **geom_vline** and **geom_hline**. 
+First, we load the needed data. We have four atributes for each journal/conference: journal or conference name, number of papers in the portfolio, number of papers in bibliographic references of the portfolio and the Journal Citation Report (JCR) value (only to scientific journals). Then we use **geom_vline** and **geom_hline** to separate different groups of journals. 
 
 ```R
 periodicals = read.csv("spreadsheet/periodicals.csv",sep=";", stringsAsFactors=FALSE)
