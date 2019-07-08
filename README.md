@@ -193,4 +193,4 @@ ggplot( periodicals,
                                 breaks = colorRampPalette(brewer.pal(11, "Spectral"))(23),
                                 labels = label)
 ```
-![Alt text](figures/figure4.png?raw=true "Title")
+![Alt text](figures/figure4.jpeg?raw=true "Title")
