@@ -32,7 +32,7 @@ if(!require(visNetwork)){
     library(visNetwork)
 }
 ```
-Now we load the data that we need to use. The way that all this data was collected and organized will not be aproached now. 
+Now we load the data that we need to use. The way that all this data was collected and organized will not be aproached at this tutorial. 
 The first .csv has registers about the number of papers per author and the second .csv has registers about the all authors names by paper.
 ```R
 works_per_author <- read.csv("spreadsheet/works_per_author.csv", sep = ";", stringsAsFactors = FALSE)
