@@ -149,7 +149,7 @@ vis_plot
 
 # Papers Citations + Authors Most Cited
 
-First, we load the needed data. We have four atributes for each paper: the paper number, paper title, paper citations and citations of most cited author. Then we use **ggplot**. We highlight the fact of using Pareto Principle in **geom_vline** and **geom_hline**. We highlight the 20% most important papers regarding to citations and citations of most cited authors.
+First, we load the needed data. We have four attributes for each paper: the paper ID, paper title, paper citations and citations of most cited author. Then we use **ggplot**. We highlight the fact of using Pareto Principle in **geom_vline** and **geom_hline**. We highlight the 20% most important papers regarding to citations and citations of most cited authors.
 ```R
 citations_x_authors = read.csv("spreadsheet/citations_x_authors.csv",sep=";", stringsAsFactors=FALSE)
 
@@ -167,7 +167,7 @@ ggplot( citations_x_authors[,4:3],
 
 # Periodicals
 
-First, we load the needed data. We have four atributes for each journal/conference: journal or conference name, number of papers in the portfolio, number of papers in bibliographic references of the portfolio and the Journal Citation Report (JCR) value (only to scientific journals). Then we use **geom_vline** and **geom_hline** to separate different groups of journals. 
+First, we load the needed data. We have four attributes for each journal/conference: journal or conference name, number of papers in the portfolio, number of papers in bibliographic references of the portfolio and the Journal Citation Report (JCR) value (only to scientific journals). Then we use **geom_vline** and **geom_hline** to separate different groups of journals. 
 
 ```R
 periodicals = read.csv("spreadsheet/periodicals.csv",sep=";", stringsAsFactors=FALSE)
