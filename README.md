@@ -93,7 +93,7 @@ Below, we create a function to normalize the graph degree.
 normalizer <- function(x) (x - min(x)) / (max(x) - min(x)) + 0.25 
 V(g)$size <-normalizer(degree(g)) * 10
 ```
-Now we read the country of the first author of each paper, generate some colors based on the country ID (already stored in the csv file) and use it to plot an interactive graph using the function **tkplot**. 
+Now we read the country of the first author of each paper, generate some colors based on the country ID (already stored in the csv file) and use them to plot an interactive graph using the function **tkplot**. 
 ```R
 authors_country <- read.csv("spreadsheet/authors_country.csv",sep=";", stringsAsFactors=FALSE)
 authors_country<-authors_country[,-3]
