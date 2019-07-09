@@ -38,7 +38,7 @@ The first .csv has registers about the number of papers per author and the secon
 works_per_author <- read.csv("spreadsheet/works_per_author.csv", sep = ";", stringsAsFactors = FALSE)
 authors_per_work <- read.csv("spreadsheet/authors_per_work.csv", sep = ";", stringsAsFactors = FALSE)
 ```
-We convert the first .csv to a dataframe object, set to 0 all rows and colunms and set to the row names the authors names.
+We convert the first .csv to a dataframe object, set to 0 all registers and set to the row names the authors names.
 works_author_df <- as.data.frame(matrix(nrow = length(works_per_author[,1]), ncol = length(works_per_author[,1])))
 ```R
 for(i in 1:nrow(works_author_df)){
