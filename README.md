@@ -109,7 +109,7 @@ legend(x = -2.3, y = 1.4, unique(authors_country$País), pch = 21, col = "#77777
 ```
 ![Alt text](figures/figure_aux.png?raw=true "Title")
 
-Other way to create a graph is using the **visNetwork** library. Check above how meaningful is the visualization (bonus to interactions and menus).
+Other way to create a graph is using the **visNetwork** library. Check below how interesting is the visualization (bonus to interactions and menus).
 ```R
 g <- remove.vertex.attribute(g, "size")
 g_vis <- toVisNetworkData(g) 
