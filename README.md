@@ -11,26 +11,21 @@ setwd("working_directory")
 ```
 Now we install and load the needed packages and libraries to perform our analysis and generate the graphics.
 ```R
-if(!require(RColorBrewer)){
-    install.packages("RColorBrewer")
-    library(RColorBrewer)
-}
-if(!require(igraph)){
-    install.packages("igraph")
-    library(igraph)
-}
-if(!require(ggplot2)){
-    install.packages("ggplot2")
-    library(ggplot2)
-}
-if(!require(ggrepel)){
-    install.packages("ggrepel")
-    library(ggrepel)
-}
-if(!require(visNetwork)){
-    install.packages("visNetwork")
-    library(visNetwork)
-}
+if(!require(RColorBrewer)) install.packages("RColorBrewer")
+require(RColorBrewer)
+
+if(!require(igraph)) install.packages("igraph")
+require(igraph)
+
+if(!require(ggplot2)) install.packages("ggplot2")
+require(ggplot2)
+
+if(!require(ggrepel)) install.packages("ggrepel")
+require(ggrepel)
+
+if(!require(visNetwork)) install.packages("visNetwork")
+require(visNetwork)
+
 ```
 Now we load the data that we need to use. The way that all this data was collected and organized will not be approached in this tutorial. 
 The first .csv has registers about the number of papers per author and the second .csv has registers about the all authors names by paper.
