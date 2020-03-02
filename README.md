@@ -12,7 +12,6 @@ setwd("working_directory")
 Now we install and load the needed packages and libraries to perform our analysis and generate the graphics.
 ```R
 if(!require(RColorBrewer)) install.packages("RColorBrewer")
-<<<<<<< HEAD
 library(RColorBrewer)
 
 if(!require(igraph)) install.packages("igraph")
