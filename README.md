@@ -11,32 +11,26 @@ setwd("working_directory")
 ```
 Now we install and load the needed packages and libraries to perform our analysis and generate the graphics.
 ```R
-if(!require(RColorBrewer)){
-    install.packages("RColorBrewer")
-    library(RColorBrewer)
-}
-if(!require(igraph)){
-    install.packages("igraph")
-    library(igraph)
-}
-if(!require(ggplot2)){
-    install.packages("ggplot2")
-    library(ggplot2)
-}
-if(!require(ggrepel)){
-    install.packages("ggrepel")
-    library(ggrepel)
-}
-if(!require(visNetwork)){
-    install.packages("visNetwork")
-    library(visNetwork)
-}
+if(!require(RColorBrewer)) install.packages("RColorBrewer")
+library(RColorBrewer)
+
+if(!require(igraph)) install.packages("igraph")
+library(igraph)
+
+if(!require(ggplot2)) install.packages("ggplot2")
+library(ggplot2)
+
+if(!require(ggrepel)) install.packages("ggrepel")
+library(ggrepel)
+
+if(!require(visNetwork)) install.packages("visNetwork")
+library(visNetwork)
 ```
 Now we load the data that we need to use. The way that all this data was collected and organized will not be approached in this tutorial. 
 The first .csv has registers about the number of papers per author and the second .csv has registers about the all authors names by paper.
 ```R
-works_per_author <- read.csv("spreadsheet/works_per_author.csv", sep = ";", stringsAsFactors = FALSE)
-authors_per_work <- read.csv("spreadsheet/authors_per_work.csv", sep = ";", stringsAsFactors = FALSE)
+works_per_author <- read.csv("spreadsheet/works_per_author.csv", sep = ";", stringsAsFactors = FALSE, encoding = "latin1")
+authors_per_work <- read.csv("spreadsheet/authors_per_work.csv", sep = ";", stringsAsFactors = FALSE, encoding = "latin1")
 ```
 We convert the first .csv to a dataframe object, set to 0 all registers and set to the row names the authors names.
 
@@ -95,7 +89,7 @@ V(g)$size <-normalizer(degree(g)) * 10
 ```
 Now we read the country of the first author of each paper, generate some colors based on the country ID (already stored in the csv file) and use them to plot an interactive graph using the function **tkplot**. 
 ```R
-authors_country <- read.csv("spreadsheet/authors_country.csv",sep=";", stringsAsFactors=FALSE)
+authors_country <- read.csv("spreadsheet/authors_country.csv", sep = ";", stringsAsFactors = FALSE, encoding = "latin1")
 authors_country<-authors_country[,-3]
 pal <- colorRampPalette(brewer.pal(9, "Paired"))(length(unique(authors_country$Num)))
 tkplot(g, canvas.width = 1400, canvas.height = 800, vertex.label.color = "black", vertex.label.cex = 1.3, layout = layout.kamada.kawai, vertex.label.font = 2, edge.color = "grey", vertex.color = pal[as.numeric(authors_country$Num)], vertex.label.dist = 1.5, vertex.frame.color = "black")
@@ -151,7 +145,7 @@ vis_plot
 
 First, we load the needed data. We have four attributes for each paper: the paper ID, paper title, paper citations and citations of most cited author. Then we use **ggplot**. We highlight the fact of using Pareto Principle in **geom_vline** and **geom_hline**. We highlight the 20% most important papers regarding to citations and citations of most cited authors.
 ```R
-citations_x_authors = read.csv("spreadsheet/citations_x_authors.csv",sep=";", stringsAsFactors=FALSE)
+citations_x_authors = read.csv("spreadsheet/citations_x_authors.csv", sep = ";", stringsAsFactors = FALSE, encoding = "latin1")
 
 ggplot( citations_x_authors[,4:3], 
         aes(citations_x_authors[,4], citations_x_authors[,3], label = citations_x_authors[,1])) +
@@ -170,7 +164,7 @@ ggplot( citations_x_authors[,4:3],
 First, we load the needed data. We have four attributes for each journal/conference: journal or conference name, number of papers in the portfolio, number of papers in bibliographic references of the portfolio and the Journal Citation Report (JCR) value (only to scientific journals). Then we use **geom_vline** and **geom_hline** to separate different groups of journals. 
 
 ```R
-periodicals = read.csv("spreadsheet/periodicals.csv",sep=";", stringsAsFactors=FALSE)
+periodicals = read.csv("spreadsheet/periodicals.csv", sep = ";", stringsAsFactors = FALSE, encoding = "latin1")
 
 label <- paste(periodicals[,1],"(JCR:", periodicals[,4], ")")
 label <- gsub(" )", ")", label)

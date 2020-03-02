@@ -1,25 +1,19 @@
-if(!require(RColorBrewer)){
-    install.packages("RColorBrewer")
-    library(RColorBrewer)
-}
-if(!require(igraph)){
-    install.packages("igraph")
-    library(igraph)
-}
-if(!require(ggplot2)){
-    install.packages("ggplot2")
-    library(ggplot2)
-}
-if(!require(ggrepel)){
-    install.packages("ggrepel")
-    library(ggrepel)
-}
-if(!require(visNetwork)){
-    install.packages("visNetwork")
-    library(visNetwork)
-}
+if(!require(RColorBrewer)) install.packages("RColorBrewer")
+library(RColorBrewer)
 
-works_per_author <- read.csv("spreadsheet/works_per_author.csv",sep=";", stringsAsFactors=FALSE)
+if(!require(igraph)) install.packages("igraph")
+library(igraph)
+
+if(!require(ggplot2)) install.packages("ggplot2")
+library(ggplot2)
+
+if(!require(ggrepel)) install.packages("ggrepel")
+library(ggrepel)
+
+if(!require(visNetwork)) install.packages("visNetwork")
+library(visNetwork)
+
+works_per_author <- read.csv("spreadsheet/works_per_author.csv", sep = ";", stringsAsFactors = FALSE, encoding = "latin1")
 works_author_df <- as.data.frame(matrix(nrow = length(works_per_author[,1]), ncol = length(works_per_author[,1])))
 
 for(i in 1:nrow(works_author_df)){
@@ -32,7 +26,7 @@ for(i in 1:nrow(works_author_df)){
     row.names(works_author_df)[i] <- works_per_author[i,1]
 }
 
-authors_per_work <- read.csv("spreadsheet/authors_per_work.csv",sep=";", stringsAsFactors=FALSE)
+authors_per_work <- read.csv("spreadsheet/authors_per_work.csv", sep = ";", stringsAsFactors = FALSE, encoding = "latin1")
 k2 <- 1									
 cont <- 1									
 for(i in 1:nrow(works_author_df)){  							
@@ -65,10 +59,10 @@ g <- graph.adjacency(termMatrix, weighted = T, mode = "undirected")
 g <- simplify(g)
 
 normalizer <- function(x) (x - min(x)) / (max(x) - min(x)) + 0.25 
-V(g)$size <-normalizer(degree(g)) * 10
+V(g)$size <- normalizer(degree(g)) * 10
 
-authors_country <- read.csv("spreadsheet/authors_country.csv",sep=";", stringsAsFactors=FALSE)
-authors_country<-authors_country[,-3]
+authors_country <- read.csv("spreadsheet/authors_country.csv", sep = ";", encoding = "latin1", stringsAsFactors = FALSE)
+authors_country <- authors_country[,-3]
 
 pal <- colorRampPalette(brewer.pal(9, "Paired"))(length(unique(authors_country$Num)))
 
@@ -84,12 +78,14 @@ names <- sort(g_vis$nodes$id)
 g_vis$nodes$value <- (normalizer(degree(g)))*10
 g_vis$nodes$country <- authors_country$País
 g_vis$nodes$group <- authors_country$País
-vis_plot <- visNetwork(nodes = g_vis$nodes, 
+vis_plot <- visNetwork(
+    nodes = g_vis$nodes, 
     edges = g_vis$edges,
     main = "Collaboration Network",
     submain = "Authors of BI and agriculture published papers",
     ) %>%
-visIgraphLayout(layout = "layout_with_kk", 
+visIgraphLayout(
+    layout = "layout_with_kk", 
     smooth = FALSE,            
     physics = TRUE             
     ) %>%
@@ -111,19 +107,19 @@ visPhysics( repulsion = list(springlength = 50),
 
 vis_plot
 
-citations_x_authors = read.csv("spreadsheet/citations_x_authors.csv",sep=";", stringsAsFactors=FALSE)
+citations_x_authors = read.csv("spreadsheet/citations_x_authors.csv", sep = ";", encoding = "latin1", stringsAsFactors=FALSE)
 
 ggplot( citations_x_authors[,4:3], 
         aes(citations_x_authors[,4], citations_x_authors[,3], label = citations_x_authors[,1])) +
         labs(   x = gsub("\\.", " ", colnames(citations_x_authors[4])), 
                 y = gsub("\\."," ", colnames(citations_x_authors[3]))) +
-        geom_vline(xintercept = (sort(citations_x_authors$Number.of.the.Citations.of.Most.Cited.Author.in.References, decreasing = TRUE)[round(nrow(citations_x_authors)*0.2)] - 0.5)) + 
-        geom_hline(yintercept = (sort(citations_x_authors$Citation.Number, decreasing = TRUE)[round(nrow(citations_x_authors)*0.2)] - 0.5)) +
+        geom_vline(xintercept = sort(citations_x_authors$Number.of.the.Citations.of.Most.Cited.Author.in.References, decreasing = TRUE)[round(nrow(citations_x_authors)*0.2)] - 0.5) + 
+        geom_hline(yintercept = sort(citations_x_authors$Citation.Number, decreasing = TRUE)[round(nrow(citations_x_authors)*0.2)] - 0.5) +
         geom_text_repel() +
         scale_shape_identity() +
         geom_point() 
 
-periodics = read.csv("spreadsheet/periodics.csv",sep=";", stringsAsFactors=FALSE)
+periodics = read.csv("spreadsheet/periodics.csv", sep = ";", encoding = "latin1", stringsAsFactors = FALSE)
 
 label <- paste(periodics[,1],"(JCR:", periodics[,4], ")")
 label <- gsub(" )", ")", label)
