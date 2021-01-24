@@ -1,3 +1,5 @@
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lubrum/BI-and-DW-in-Agrarian-Sector) ![GitHub last commit](https://img.shields.io/github/last-commit/Lubrum/BI-and-DW-in-Agrarian-Sector) ![GitHub repo size](https://img.shields.io/github/repo-size/Lubrum/BI-and-DW-in-Agrarian-Sector)
+
 # Summary
 
 This short project aims to generate useful visualizations about authors (colaboration network) and works published in international journals and conferences about Business Intelligence and Data Warehouse applied to solve problems in agriculture and livestock. This work was developed during my graduation in [Applied Computing](http://cursos.unipampa.edu.br/cursos/ppgcap/) in [Federal University of Pampa](http://novoportal.unipampa.edu.br/novoportal/), in partnership with [Brazilian Agricultural Research Colorporation](https://www.embrapa.br/en/international), also known as Embrapa.
