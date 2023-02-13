@@ -11,7 +11,7 @@ First, open your RStudio or other IDE with R language. Set you directory as the 
 ```R
 setwd("working_directory")
 ```
-Now we install and load the needed packages and libraries to perform our analysis and generate the graphics.
+Now we install and load the needed packages and libraries to perform analysis and generate the graphics.
 ```R
 if(!require(RColorBrewer)) install.packages("RColorBrewer")
 library(RColorBrewer)
